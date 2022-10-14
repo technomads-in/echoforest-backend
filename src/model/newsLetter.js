@@ -9,7 +9,8 @@ const newsSchema = new mongoose.Schema({
         type: String,
         trim: true,
         lowercase: true,
-        unique: true,
+        sparse: true,
+        // unique: true,
         // required: 'Email address is required',
         // validate: [validateEmail, 'Please fill a valid email address'],
     }
