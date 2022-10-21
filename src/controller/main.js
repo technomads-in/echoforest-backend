@@ -16,6 +16,21 @@ const newsletter = async(req,res) => {
         if (!user) {
           return res.status(400).send({ status: false, message: "Data not found" });
         }
+
+
+        var sendMailData = {
+          "file_template": './public/EmailTemplates/newsLetter.html',
+          "from": email,
+        }
+  
+        sendEmail(sendMailData).then((val) => {
+            return res.status(200).send({ 'status': true, 'code': 200, 'message': "Please check your email.", 'data': val })
+        }).catch((err) => {
+            console.log(err);
+            return res.status(401).send({ "status": false, 'code': 200, "message": "Unable to send email!", data: {} })
+        })
+
+
         return res.status(200).send({ status: true, data: user });
     }catch(e)
     {
@@ -49,7 +64,7 @@ const contactUs = async(req, res) => {
           "username": `${ name }`,
           "from": email,
           "message": message
-      }
+        }
   
       sendEmail(sendMailData).then((val) => {
           return res.status(200).send({ 'status': true, 'code': 200, 'message': "Please check your email.", 'data': val })

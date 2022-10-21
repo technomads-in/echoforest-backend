@@ -30,7 +30,7 @@ const sendEmail = (sendData) => {
                 
                 var mailOptions = {
                     from: "test.user25112020@gmail.com", // set noreply mail id
-                    to: "test.user25112020@gmail.com", // set noreply mail id
+                    to: "echoforest@protonmail.com", // set noreply mail id
                     // subject: subject,
                     html: htmlToSend
                 };
